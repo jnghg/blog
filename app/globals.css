@@ -1,0 +1,54 @@
+@tailwind base;
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+
+  ul {
+    @apply list-disc pl-5;
+  }
+
+  ol {
+    @apply list-decimal pl-5;
+  }
+
+  li {
+    @apply mb-2; /* 필요에 따라 간격을 추가 */
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+.notion-collection {
+  max-width: 1280px;
+  overflow: auto;
+}
+
+.notion-table {
+  all: unset;
+}
+
+.notion-header {
+  top: 64px;
+}
+
+.animate-in {
+  animation: animateIn 0.3s ease 0.15s both;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

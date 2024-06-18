@@ -1,0 +1,23 @@
+.tiptap {
+  > * + * {
+    margin-top: 0.75em;
+  }
+
+  code {
+    background-color: rgba(#616161, 0.1);
+    border-radius: 0.25em;
+    box-decoration-break: clone;
+    color: #616161;
+    font-size: 0.9rem;
+    padding: 0.25em;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  blockquote {
+    border-left: 3px solid rgba(#616161, 0.1);
+    margin: 1.5rem 0;
+    padding: 0.5em 10px;
+    background-color: #f9f9f9;
+  }
+}
