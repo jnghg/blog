@@ -17,12 +17,12 @@ export default function BlogPost({ title, content }: any) {
   });
 
   return (
-    <>
+    <div className="w-full max-w-6xl px-4">
       <div className="py-4 w-full text-3xl text-center">{title}</div>
       <EditorContent
         style={{ whiteSpace: "pre-line", maxWidth: "1152px" }}
         editor={editor}
       />
-    </>
+    </div>
   );
 }
