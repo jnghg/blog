@@ -1,7 +1,6 @@
 import { Footer } from "@/components/Footer";
 import Nav from "@/components/Nav";
 import { ReactNode } from "react";
-import { redirect } from "next/navigation";
 
 export default async function BlogLayout({
   children,

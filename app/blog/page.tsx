@@ -21,6 +21,7 @@ export default async function BlogPages() {
           <Link
             href={`/blog/${post.id}`}
             className="rounded-lg transform transition-transform hover:-translate-y-2 shadow-lg duration-300"
+            key={post.id}
           >
             <BlogCard
               key={post.id}
