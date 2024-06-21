@@ -17,6 +17,7 @@ import {
   Redo,
   Code,
 } from "lucide-react";
+import { useFormStatus } from "react-dom";
 
 type Props = {
   editor: Editor | null;
@@ -24,13 +25,15 @@ type Props = {
 };
 
 const Toolbar = ({ editor, content }: Props) => {
+  const { pending } = useFormStatus();
+
   if (!editor) {
     return null;
   }
   return (
     <div
-      className="px-4 py-2 flex justify-between items-start
-    gap-5 w-full flex-wrap border border-sky-300 rounded-md"
+      className="px-4 py-3 flex justify-between items-center
+    gap-5 w-full flex-wrap rounded-md shadow-lg sticky top-16 bg-white z-30"
     >
       <div className="flex justify-start items-center gap-5 w-full lg:w-10/12 flex-wrap ">
         <button
@@ -204,14 +207,16 @@ const Toolbar = ({ editor, content }: Props) => {
           <Redo className="w-5 h-5" />
         </button>
       </div>
-      {/* {content && (
+      {content && (
         <button
+          className="px-4 bg-sky-700 text-white py-2 rounded-md hover:bg-sky-600 duration-300 disabled:cursor-not-allowed disabled:bg-sky-500"
+          disabled={pending}
+          aria-disabled={pending}
           type="submit"
-          className="px-4 bg-sky-700 text-white py-2 rounded-md"
         >
-          Add
+          {pending ? "Saving.." : "Save"}
         </button>
-      )} */}
+      )}
     </div>
   );
 };

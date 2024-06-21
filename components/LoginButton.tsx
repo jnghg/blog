@@ -5,7 +5,7 @@ export function LoginButton() {
     <div className="flex items-center gap-4">
       <Link
         href="/login"
-        className="py-2 px-3 flex rounded-md no-underline bg-opacity-20 bg-slate-400 hover:bg-slate-600 hover:bg-opacity-20 duration-300"
+        className="py-2 px-3 flex rounded-md no-underline bg-opacity-20 bg-slate-300 hover:bg-slate-400 hover:bg-opacity-20 duration-300"
       >
         Login
       </Link>

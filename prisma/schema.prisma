@@ -9,6 +9,7 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+// OAuth
 model Account {
   id                       String  @id @default(cuid())
   userId                   String  @map("user_id")
@@ -28,35 +29,6 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model User {
-  id                 String    @id @default(cuid())
-  name               String?
-  email              String?
-  emailVerified      DateTime? @map("email_verified")
-  image              String?
-  device             String?
-  etcDevice          String?
-  isPlannedSubscribe Boolean?
-  phone              String?
-  purpose            String?
-  redirectUri        String?
-  sessions           Session[]
-  accounts           Account[]
-  apiToken           ApiToken?
-
-  @@unique([email])
-}
-
-model ApiToken {
-  id           String @id @default(cuid())
-  clientId     String
-  clientSecret String
-  userEmail    String
-  user         User   @relation(fields: [userEmail], references: [email])
-
-  @@unique([userEmail])
-}
-
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique @map("session_token")
@@ -65,10 +37,47 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// email login token
 model VerificationToken {
   identifier String   @id @default(cuid()) @map("_id")
   token      String
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// 사용자
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  posts         Post[]
+  sessions      Session[]
+  accounts      Account[]
+
+  @@unique([email])
+}
+
+model Post {
+  id         String       @id @default(cuid())
+  title      String
+  content    String
+  userId     String
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postImages PostImages[]
+  createAt   DateTime     @default(now())
+  updateAt   DateTime     @updatedAt
+}
+
+model PostImages {
+  id     String  @id @default(cuid())
+  name   String
+  path   String
+  size   Int?
+  format String?
+
+  postId String
+  Post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 }

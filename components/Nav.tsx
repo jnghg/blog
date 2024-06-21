@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export default async function Nav() {
   const session = (await getServerSession(authOptions)) as any;
+
   return (
     <nav className="w-full flex justify-center border-b h-16 sticky top-0 z-[222] bg-white">
       <div className="w-full max-w-7xl flex justify-between items-center p-3 text-sm">

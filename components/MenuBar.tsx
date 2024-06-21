@@ -1,9 +1,6 @@
-import { getUser } from "@/app/api/user";
 import Link from "next/link";
 
 export async function MenuBar() {
-  const user = await getUser();
-
   return (
     <div className="flex items-center gap-2">
       <Link

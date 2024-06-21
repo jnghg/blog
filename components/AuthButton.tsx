@@ -2,20 +2,33 @@
 
 import { signOut } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { LogOut } from "lucide-react";
 
 export default function SessionButton(session: any) {
   return (
-    <div className="flex items-center gap-4">
-      <Avatar>
-        <AvatarImage src={session?.user?.image || ""} alt="@blog" />
-        <AvatarFallback />
-      </Avatar>
-      <button
-        className="py-2 px-4 rounded-md no-underline bg-opacity-20 bg-slate-400 hover:bg-slate-600 hover:bg-opacity-20 duration-300"
-        onClick={() => signOut()}
-      >
-        Logout
-      </button>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Avatar className="w-9 h-9 hover:cursor-pointer hover:ring-1">
+          <AvatarImage src={session?.user?.image || ""} alt="@blog" />
+          <AvatarFallback />
+        </Avatar>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32 mt-3">
+        <DropdownMenuItem
+          className="hover:cursor-pointer"
+          onClick={() => signOut()}
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

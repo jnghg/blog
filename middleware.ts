@@ -6,7 +6,7 @@ export default withAuth(
   async function middleware(req) {
     const pathName = req.nextUrl.pathname || "";
     const isLoginPath = pathName === "/login";
-    const protectedPages = ["/management", "/signup"];
+    const protectedPages = ["/blog/write"];
 
     // token이 존재하면 main 페이지로
     if (isLoginPath && req.nextauth.token) {
@@ -27,4 +27,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: ["/signup", "/login", "/management"] };
+export const config = { matcher: ["/login", "/blog/write"] };
