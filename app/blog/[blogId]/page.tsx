@@ -7,5 +7,7 @@ export default async function Blog({ params }: { params: { blogId: string } }) {
 
   if (!post) redirect("/blog");
 
-  return <BlogPost title={post?.title} content={post?.content} />;
+  return (
+    <BlogPost title={post?.title} content={post?.content} editable={false} />
+  );
 }

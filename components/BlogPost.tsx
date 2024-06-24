@@ -4,7 +4,7 @@ import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-export default function BlogPost({ title, content }: any) {
+export default function BlogPost({ title, content, editable }: any) {
   const editor = useEditor({
     extensions: [StarterKit, Underline],
     content,
@@ -14,6 +14,7 @@ export default function BlogPost({ title, content }: any) {
           "px-4 py-3 max-w-6xl gap-3 font-medium text-[16px] pt-4 rounded-bl-md rounded-br-md outline-none min-h-[300px]",
       },
     },
+    editable,
   });
 
   return (

@@ -23,6 +23,12 @@ export async function createPost(post: PostProps) {
   }
 }
 
+// 블로그 수정
+export async function updatePost(blogId: string, post: PostProps) {}
+
+// 블로그 삭제
+export async function deletePost(blogId: string) {}
+
 // 블로그 목록
 export async function getPosts() {
   try {
